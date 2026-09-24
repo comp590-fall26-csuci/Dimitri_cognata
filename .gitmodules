@@ -1,3 +1,6 @@
 [submodule "lab3/pychess"]
 	path = lab3/pychess
 	url = https://github.com/pychess/pychess.git
+[submodule "lab3/cloudcmd"]
+	path = lab3/cloudcmd
+	url = https://github.com/coderaiser/cloudcmd.git
