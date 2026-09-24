@@ -1,0 +1,3 @@
+[submodule "lab3/pychess"]
+	path = lab3/pychess
+	url = https://github.com/pychess/pychess.git
