@@ -1,0 +1,33 @@
+# Name shown on the GitHub Actions page
+name: Lab 4 Build and Test
+
+# Run when code is pushed or used in a pull request
+on:
+  push:
+  pull_request:
+
+jobs:
+  build-and-test:
+    # GitHub's hosted Linux runner
+    runs-on: ubuntu-latest
+
+    steps:
+      # Download the repository and its Git submodules
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      # Compile the Lab 3 C code with its Makefile
+      - name: Build program
+        run: |
+          make -C lab3 clean
+          make -C lab3
+
+      # Run the compiled program and verify its output
+      - name: Run and verify program
+        run: |
+          output=$(make -s -C lab3 run)
+          echo "$output"
+          echo "$output" | grep -Fxq "The 10th Fibonacci number is 55"
+          echo "$output" | grep -Fxq "The theoretical Golden Ratio is 1.618034"
