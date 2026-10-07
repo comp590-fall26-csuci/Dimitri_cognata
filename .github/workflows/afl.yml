@@ -1,0 +1,14 @@
+name: AFL++
+
+on: pull_request
+
+jobs:
+  afl:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt update && sudo apt install -y afl++
+      - run: afl-clang-fast -o dvcp dvcp.c
+      - run: mkdir seeds && echo test > seeds/input
+      - run: timeout 180s afl-fuzz -i seeds -o results -- ./dvcp @@
