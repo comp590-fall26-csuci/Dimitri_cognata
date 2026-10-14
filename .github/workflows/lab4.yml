@@ -31,3 +31,7 @@ jobs:
           echo "$output"
           echo "$output" | grep -Fxq "The 10th Fibonacci number is 55"
           echo "$output" | grep -Fxq "The theoretical Golden Ratio is 1.618034"
+
+      #Run the fib unit tests 
+      - name: Run unit tests 
+        run: make -C lab3 test    
