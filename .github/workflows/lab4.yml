@@ -32,7 +32,6 @@ jobs:
           echo "$output" | grep -Fxq "The 10th Fibonacci number is 55"
           echo "$output" | grep -Fxq "The theoretical Golden Ratio is 1.618034"
 
-
       # add semgrep commuinty addition
   semgrep:
     name: Semgrep scan
